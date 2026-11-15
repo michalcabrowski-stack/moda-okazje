@@ -3,12 +3,23 @@
 <head>
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <title>Gorące Okazje</title>
+    <title>Gorące Okazje - The Ghost Selection</title>
     <style>
         * { box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif; background-color: #0b0f19; color: #f3f4f6; margin: 0; padding: 30px 20px; }
-        h1 { text-align: center; color: #00ff66; margin-bottom: 40px; font-size: 28px; text-shadow: 0 0 15px rgba(0,255,102,0.4); letter-spacing: 2px; text-transform: uppercase; }
+        body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif; background-color: #0b0f19; color: #f3f4f6; margin: 0; padding: 20px; }
         
+        header { text-align: center; margin-bottom: 40px; padding: 40px 20px; background: #00ff66; color: #0b0f19; border-radius: 12px; box-shadow: 0 0 25px rgba(0,255,102,0.3); }
+        header h2 { font-size: 14px; letter-spacing: 2px; margin: 0 0 10px 0; text-transform: uppercase; }
+        header h1 { font-size: 32px; margin: 0; font-weight: 900; text-transform: uppercase; }
+        
+        .section-title { text-align: center; color: #ffffff; font-size: 26px; margin-bottom: 20px; letter-spacing: 1px; }
+
+        /* Styl zakładek (filtrów) */
+        .tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .tab { background: #131825; color: #9ca3af; border: 1px solid #1f293d; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; font-size: 13px; }
+        .tab:hover { border-color: #00ff66; color: #ffffff; }
+        .tab.active { background: #00ff66; color: #0b0f19; border-color: #00ff66; box-shadow: 0 0 12px rgba(0,255,102,0.4); }
+
         /* Siatka kafelków */
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
         
@@ -16,6 +27,9 @@
         .card { background: #131825; border-radius: 12px; overflow: hidden; border: 1px solid #1f293d; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
         .card:hover { transform: translateY(-6px); border-color: #00ff66; box-shadow: 0 8px 25px rgba(0,255,102,0.2); }
         
+        /* Ukrywanie kafelka przy filtrowaniu */
+        .card.hidden { display: none; }
+
         /* Zdjęcie produktu */
         .card img { width: 100%; height: 160px; object-fit: cover; background: #1a2234; border-bottom: 1px solid #1f293d; }
         
@@ -32,7 +46,25 @@
     </style>
 </head>
 <body>
-    <h1>Gorące Okazje</h1>
+
+    <header>
+        <h2>Vol. 001 / Streetwear & Sneakers</h2>
+        <h1>Styl, który nawiedza</h1>
+    </header>
+
+    <h2 class=\"section-title\">The Ghost Selection</h2>
+
+    <!-- Zakładki kategorii -->
+    <div class=\"tabs\">
+        <button class=\"tab active\" onclick=\"filterCategory(\, this)\">Wszystkie</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Buty</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Spodnie</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Bluzy</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Koszulki</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Akcesoria</button>
+    </div>
+
+    <!-- Siatka produktów z klockiem Text Aggregatora -->
     <div class=\"grid\"><a href="[https://low-prices.eu/a/L9QL6UQGZuNu5PmR](https://low-prices.eu/a/L9QL6UQGZuNu5PmR)" target="_blank" class="card" data-category="Buty">
     <img src="https://img.eobuwie.cloud/product(b/d/b/6/bdb634a347e53f935227f090222dd7b666da617f_21_4066749842611_EK.jpg,webp)/sneakersy-adidas-campus-00s-j-hq6507-szary-0000303316181.webp" alt="Produkt">
     <div class="card-content">
@@ -49,5 +81,24 @@
         <span class="btn">Sprawdź okazję</span>
     </div>
 </a></div>
+
+    <script>
+        function filterCategory(category, element) {
+            // Zmiana aktywnej zakładki
+            document.querySelectorAll(\).forEach(tab => tab.classList.remove(\));
+            element.classList.add(\);
+
+            // Filtrowanie kafelków
+            const cards = document.querySelectorAll(\);
+            cards.card = cards.forEach(card => {
+                const cardCategory = card.getAttribute(\NaN);
+                if (category === \ || cardCategory === category) {
+                    card.classList.remove(\);
+                } else {
+                    card.classList.add(\);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
