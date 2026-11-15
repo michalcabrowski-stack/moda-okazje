@@ -5,21 +5,34 @@
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>Gorące Okazje</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #050505; color: #ffffff; margin: 0; padding: 20px; }
-        h1 { text-align: center; color: #00ff66; margin-bottom: 30px; text-shadow: 0 0 10px rgba(0,255,102,0.4); letter-spacing: 1px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 230px)); justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .card { background: #111111; border-radius: 10px; overflow: hidden; border: 1px solid #222222; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
-        .card:hover { transform: translateY(-4px); border-color: #00ff66; box-shadow: 0 0 15px rgba(0,255,102,0.3); }
-        .card img { width: 100%; height: 150px; object-fit: cover; background: #1a1a1a; }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif; background-color: #0b0f19; color: #f3f4f6; margin: 0; padding: 30px 20px; }
+        h1 { text-align: center; color: #00ff66; margin-bottom: 40px; font-size: 28px; text-shadow: 0 0 15px rgba(0,255,102,0.4); letter-spacing: 2px; text-transform: uppercase; }
+        
+        /* Siatka kafelków */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        
+        /* Wygląd pojedynczego kafelka */
+        .card { background: #131825; border-radius: 12px; overflow: hidden; border: 1px solid #1f293d; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .card:hover { transform: translateY(-6px); border-color: #00ff66; box-shadow: 0 8px 25px rgba(0,255,102,0.2); }
+        
+        /* Zdjęcie produktu */
+        .card img { width: 100%; height: 160px; object-fit: cover; background: #1a2234; border-bottom: 1px solid #1f293d; }
+        
+        /* Zawartość kafelka */
         .card-content { padding: 14px; display: flex; flex-direction: column; flex-grow: 1; }
-        .card h3 { font-size: 14px; margin: 0 0 8px 0; color: #e2e8f0; line-height: 1.3; }
-        .price { font-size: 16px; font-weight: bold; color: #00ff66; margin-bottom: 14px; text-shadow: 0 0 5px rgba(0,255,102,0.3); }
-        .btn { margin-top: auto; background: #00ff66; color: #000000; text-align: center; padding: 8px; border-radius: 6px; font-weight: bold; font-size: 13px; transition: background 0.2s, box-shadow 0.2s; }
-        .card:hover .btn { background: #00cc52; box-shadow: 0 0 10px rgba(0,255,102,0.5); }
+        .card h3 { font-size: 14px; font-weight: 600; margin: 0 0 10px 0; color: #e5e7eb; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* Cena */
+        .price { font-size: 17px; font-weight: 700; color: #00ff66; margin-bottom: 14px; text-shadow: 0 0 8px rgba(0,255,102,0.3); }
+        
+        /* Przycisk */
+        .btn { margin-top: auto; background: #00ff66; color: #0b0f19; text-align: center; padding: 9px; border-radius: 8px; font-weight: 700; font-size: 13px; transition: all 0.2s ease; box-shadow: 0 0 10px rgba(0,255,102,0.2); }
+        .card:hover .btn { background: #00cc52; box-shadow: 0 0 15px rgba(0,255,102,0.5); }
     </style>
 </head>
 <body>
-    <h1>GORĄCE OKAZJE</h1>
+    <h1>Gorące Okazje</h1>
     <div class=\"grid\"><a href="[https://low-prices.eu/a/L9QL6UQGZuNu5PmR](https://low-prices.eu/a/L9QL6UQGZuNu5PmR)" target="_blank" class="card">
     <img src="https://img.eobuwie.cloud/product(b/d/b/6/bdb634a347e53f935227f090222dd7b666da617f_21_4066749842611_EK.jpg,webp)/sneakersy-adidas-campus-00s-j-hq6507-szary-0000303316181.webp" alt="Produkt">
     <div class="card-content">
