@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang=\"pl\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>Gorące Okazje - The Ghost Selection</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif; background-color: #0b0f19; color: #f3f4f6; margin: 0; padding: 20px; }
+        
+        header { text-align: center; margin-bottom: 30px; padding: 25px 20px; background: #00ff66; color: #0b0f19; border-radius: 12px; box-shadow: 0 0 20px rgba(0,255,102,0.3); }
+        header h2 { font-size: 12px; letter-spacing: 2px; margin: 0 0 6px 0; text-transform: uppercase; }
+        header h1 { font-size: 24px; margin: 0; font-weight: 900; text-transform: uppercase; }
+        
+        .section-title { text-align: center; color: #ffffff; font-size: 20px; margin-bottom: 20px; letter-spacing: 1px; }
 
+        /* Zakładki kategorii */
+        .tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 25px; }
+        .tab { background: #131825; color: #9ca3af; border: 1px solid #1f293d; padding: 7px 14px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; font-size: 11px; }
+        .tab:hover { border-color: #00ff66; color: #ffffff; }
+        .tab.active { background: #00ff66; color: #0b0f19; border-color: #00ff66; box-shadow: 0 0 10px rgba(0,255,102,0.4); }
+
+        /* Zablokowanie układu na dokładnie 3 kolumny obok siebie */
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 950px; margin: 0 auto; }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: repeat(1, 1fr); }
+        }
+        
+        .card { background: #131825; border-radius: 10px; overflow: hidden; border: 1px solid #1f293d; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .card:hover { transform: translateY(-4px); border-color: #00ff66; box-shadow: 0 6px 20px rgba(0,255,102,0.2); }
+        
+        /* Ukrywanie kafelka przy filtrowaniu zakładek */
+        .card.hidden { display: none !important; }
+
+        .card img { width: 100%; height: 130px; object-fit: cover; background: #1a2234; border-bottom: 1px solid #1f293d; }
+        
+        .card-content { padding: 10px; display: flex; flex-direction: column; flex-grow: 1; }
+        .card h3 { font-size: 12px; font-weight: 600; margin: 0 0 6px 0; color: #e5e7eb; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        .price { font-size: 14px; font-weight: 700; color: #00ff66; margin-bottom: 10px; text-shadow: 0 0 6px rgba(0,255,102,0.3); }
+        
+        .btn { margin-top: auto; background: #00ff66; color: #0b0f19; text-align: center; padding: 7px; border-radius: 6px; font-weight: 700; font-size: 11px; transition: all 0.2s ease; }
+        .card:hover .btn { background: #00cc52; box-shadow: 0 0 10px rgba(0,255,102,0.5); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>Vol. 001 / Streetwear & Sneakers</h2>
+        <h1>Styl, który nawiedza</h1>
+    </header>
+
+    <h2 class=\"section-title\">The Ghost Selection</h2>
+
+    <div class=\"tabs\">
+        <button class=\"tab active\" onclick=\"filterCategory(\, this)\">Wszystkie</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Buty</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Spodnie</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Bluzy</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Koszulki</button>
+        <button class=\"tab\" onclick=\"filterCategory(\, this)\">Akcesoria</button>
+    </div>
+
+    <div class=\"grid\"><a href="[https://low-prices.eu/a/L9QL6UQGZuNu5PmR](https://low-prices.eu/a/L9QL6UQGZuNu5PmR)" target="_blank" class="card" data-category="Buty">
+    <img src="https://img.eobuwie.cloud/product(b/d/b/6/bdb634a347e53f935227f090222dd7b666da617f_21_4066749842611_EK.jpg,webp)/sneakersy-adidas-campus-00s-j-hq6507-szary-0000303316181.webp" alt="Produkt">
+    <div class="card-content">
+        <h3>Buty Adidas Campus 00s</h3>
+        <p class="price">349 zł</p>
+        <span class="btn">Sprawdź okazję</span>
+    </div>
+</a>
+<a href="[https://low-prices.eu/a/L9QL6UQGZuNu5PmR](https://low-prices.eu/a/L9QL6UQGZuNu5PmR)" target="_blank" class="card" data-category="Buty">
+    <img src="https://img.eobuwie.cloud/product(b/d/b/6/bdb634a347e53f935227f090222dd7b666da617f_21_4066749842611_EK.jpg,webp)/sneakersy-adidas-campus-00s-j-hq6507-szary-0000303316181.webp" alt="Produkt">
+    <div class="card-content">
+        <h3>shox</h3>
+        <p class="price">349 zł</p>
+        <span class="btn">Sprawdź okazję</span>
+    </div>
+</a></div>
+
+    <script>
+        function filterCategory(category, element) {
+            document.querySelectorAll(\).forEach(tab => tab.classList.remove(\));
+            element.classList.add(\);
+            
+            document.querySelectorAll(\).forEach(card => {
+                const cardCat = card.getAttribute(\NaN);
+                if (category === \ || cardCat === category) {
+                    card.classList.remove(\);
+                } else {
+                    card.classList.add(\);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
